@@ -1,10 +1,21 @@
 "use strict";
 
-import {Alert} from "./utilities/alert.js";
-import {Character} from "./models/character.js";
+import { Player } from "./models/Player.js";
+import { Character } from "./models/Character.js";
+import "./utilities/extensions.js";
 
-//Alert.present("hey, listen!");
+let newbie = new Player("Mike");
 
-let dallas = new Character("Dallas", "Rexington");
-console.log(dallas);
-dallas.greet();
+
+//console.log(Player.fakePlayer());
+
+let newCharacter = new Character("bobert");
+newCharacter.updateAttribute(
+    "mind",
+    Number(prompt("gimme a numba bruh"))
+);
+console.log(newCharacter);
+
+
+
+
