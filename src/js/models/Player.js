@@ -8,9 +8,9 @@ export class Player {
         this.id = null
     }
 
-    static fakePlayer() {
+    static fakePlayer(name = "Imposter") {
         let prefixes = ["Mr.", "Ms.", "Dr.", "Lord", "Count"];
-        return new Player(`${prefixes.random()} Imposter`);
+        return new Player(`${prefixes.random()} ${name}`);
     }
 
     updateName(newName) {
