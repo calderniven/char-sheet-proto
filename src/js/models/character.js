@@ -1,5 +1,8 @@
 "use strict";
 
+import { Player } from "./Player.js";
+import { CharacterBar } from "../ui/CharacterBar.js";
+
 export class Character {
 
     constructor(characterName) {
@@ -14,6 +17,15 @@ export class Character {
             instinct: 1,
             wits: 1,
         }
+    }
+
+    static register() {
+        let newCharacter = new Character(
+            prompt("Name your character:")
+        );
+        Player.current().characters.push(newCharacter);
+        console.log(Player.current().characters);
+        CharacterBar.render();
     }
 
     updateAttribute(attributeName, value) {
