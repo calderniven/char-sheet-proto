@@ -5,7 +5,8 @@ export class Player {
     constructor(playerName) {
         this.playerName = playerName;
         this.characters = [];
-        this.id = null
+        this.id = null;
+        this.activeCharacter = null;
     }
 
     /** @return {Player} */

@@ -1,5 +1,11 @@
 "use strict";
 
+/**
+ * 
+ * @param {String} selector 
+ * @param {*} scope
+ * @returns {ChildNode}
+ */
 export function $(selector, scope = document) {
     return scope.querySelector(selector);
 }
