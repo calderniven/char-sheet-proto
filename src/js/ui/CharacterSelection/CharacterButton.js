@@ -1,15 +1,17 @@
 "use strict";
 
+import { Player } from "../../models/Player.js";
+import { $$ } from "../../utilities/Helpers.js";
+
 export class CharacterButton {
     
-    getCharacterObject(event) {
-        event.preventDefault();
+    static getCharacterObject(event) {
         let characters = Player.current().characters;
-        let index = this.getIndex(event);
+        let index = CharacterButton.getIndex(event);
         return { characters, index };
     }
-    
-    getIndex(event) {
+
+    static getIndex(event) {
         let characterDiv = event.target.parentNode;
         let characterList = characterDiv.parentNode;
         let index = $$(".character", characterList).indexOf(characterDiv);

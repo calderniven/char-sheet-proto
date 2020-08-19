@@ -2,12 +2,14 @@
 
 import {$$, $} from "../../utilities/Helpers.js"
 import { Player } from "../../models/Player.js";
+import { TerminateButton } from "./TerminateButton.js";
+import { ActivateButton } from "./ActivateButton.js";
 
 export class CharacterList {
     static getTemplate(name) {
         return `
             <div class="character">
-            <a href="">Activate</a>
+            <a class="activate" href="">Activate</a>
             <div class="character-name">${name}</div>
             <a class="terminate" href="">Terminate</a>
             </div>
@@ -34,18 +36,13 @@ export class CharacterList {
     }
 
     static addListeners() {
-        let terminateButtons = $$(".terminate");
-        for (const button of terminateButtons) {
-            button.onclick = function(event) {
-                event.preventDefault();
-                let characterDiv = event.target.parentNode;
-                let characterList = characterDiv.parentNode;
-                let characters = Player.current().characters;
-                let index = $$(".character", characterList).indexOf(characterDiv);
-                if (confirm(`Really delete ${characters[index].characterName}?`)) {
-                    characters.splice(index, 1);
-                    CharacterList.render();
-                }
+        let characterButtons = $$(".terminate, .activate");
+        for (const button of characterButtons) {
+            if (button.className == "terminate") {
+                button.onclick = TerminateButton.removeAndRerender;
+            }
+            if (button.className == "activate") {
+                button.onclick = ActivateButton.activate;
             }
         }
     }

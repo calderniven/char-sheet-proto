@@ -14,6 +14,11 @@ export class Player {
         return window.player;
     }
 
+    static activeCharacter() {
+        let player = window.player;
+        return player.characters[player.activeCharacter];
+    }
+
     static fakePlayer(name = "Imposter") {
         let prefixes = ["Mr.", "Ms.", "Dr.", "Lord", "Count"];
         return new Player(`${prefixes.random()} ${name}`);

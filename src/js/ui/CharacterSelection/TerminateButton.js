@@ -1,20 +1,20 @@
 "use strict";
 
-import { Player } from "../../models/Player.js";
 import { CharacterList } from "./CharacterList.js";
 import { CharacterButton } from "./CharacterButton.js";
 
 export class TerminateButton extends CharacterButton {
 
-    removeAndRerender(event) {
-        let { characters, index } = this.getCharacterObject(event);
-        if (this.confirmDelete(characters, index)) {
+    static removeAndRerender(event) {
+        event.preventDefault();
+        let { characters, index } = TerminateButton.getCharacterObject(event);
+        if (TerminateButton.confirmDelete(characters, index)) {
             characters.splice(index, 1);
             CharacterList.render();
         }
     }
 
-    confirmDelete(characters, index) {
+    static confirmDelete(characters, index) {
         return confirm(`Really delete ${characters[index].characterName}?`);
     }
 }
