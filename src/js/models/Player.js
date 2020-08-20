@@ -20,8 +20,10 @@ export class Player {
     }
 
     static fakePlayer(name = "Imposter") {
-        let prefixes = ["Mr.", "Ms.", "Dr.", "Lord", "Count"];
-        return new Player(`${prefixes.random()} ${name}`);
+        name = prompt("Your name?");
+        let prefixes = ["Doctor", "Lord", "Count", "Reverend", "Dirt-Farmer", "Pope", "that pig"];
+        let suffixes = ["-Sama", "-Kun", "-Sensei", " from HR", ", the runway model"]
+        return new Player(`${prefixes.random()} ${name}${suffixes.random()}`);
     }
 
     updateName(newName) {
